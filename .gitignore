@@ -1,0 +1,8 @@
+.DS_Store
+*~
+*.pdf
+*.log
+*.aux
+*.out
+README.html
+README.tex
