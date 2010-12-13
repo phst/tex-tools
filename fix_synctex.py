@@ -1,4 +1,4 @@
-#!/usr/bin/env python3
+#!/usr/bin/env python3.1
 #
 # Copyright (c) 2010, Philipp Stephani <st_philipp@yahoo.de>
 #
@@ -24,13 +24,6 @@ import re
 import optparse
 import os
 import gzip
-
-# HACK
-if not hasattr(gzip.GzipFile, "__enter__"):
-    gzip.GzipFile.__enter__ = lambda self: self
-
-if not hasattr(gzip.GzipFile, "__exit__"):
-    gzip.GzipFile.__exit__ = lambda self, exc_type, exc_val, exc_tb: False
 
 
 pattern = re.compile(br"^(Input:\d+:)([^/].*)$", re.M)
