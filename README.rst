@@ -2,6 +2,15 @@ Various |TeX| tools
 ===================
 
 
+``test_output_dir.sh``
+----------------------
+
+This script performs various tests to check whether the flag
+``--output-directory`` works correctly.  Specifically, it checks whether
+protocol, format, recorder, and SyncTeX files end up in the output directory
+with correct names and sensible content.
+
+
 ``fix_synctex.py``
 ------------------
 
