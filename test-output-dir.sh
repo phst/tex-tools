@@ -60,7 +60,12 @@ export input_dir="$root_dir/input"
 export output_dir="$root_dir/output"
 export input_file=test.tex
 
-code='\ifx\null\undefined\expandafter\dump\else\null\bye\fi'
+code='\ifx\null\undefined
+  \expandafter\dump
+\else
+  \null
+  \expandafter\bye
+\fi'
 flags=(--interaction=batchmode --output-directory=output --recorder)
 
 mkdir -p "$input_dir" "$output_dir"
@@ -75,9 +80,9 @@ chmod a-w .
 run_program() {
     rm -f output/*
     test_name=compilation
-    local synctex_flags
-    [[ $synctex == 1 ]] && synctex_flag='--synctex=-1' || synctex_flag=''
-    "$program" "${flags[@]}" "$synctex_flag" "$@" > /dev/null && pass_test || fail_test
+    local args=("$program" "${flags[@]}")
+    [[ $synctex == 1 ]] && args+=('--synctex=-1')
+    "${args[@]}" "$@" > /dev/null && pass_test || fail_test
 }
 
 check_files() {
